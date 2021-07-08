@@ -9,8 +9,8 @@ class ArgsParser {
 
     infix fun parse(arguments: Set<String>): Set<Flag> {
         require(SCHEMA.containsAll(arguments))
-        val firstFlag = Flag(FIRST_FLAG, FIRST_FLAG in arguments)
-        val secondFlag = Flag(SECOND_FLAG, SECOND_FLAG in arguments)
-        return setOf(firstFlag, secondFlag)
+        return SCHEMA
+            .map { Flag(it, it in arguments) }
+            .toSet()
     }
 }
