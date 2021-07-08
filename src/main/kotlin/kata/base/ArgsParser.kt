@@ -2,15 +2,18 @@ package kata.base
 
 class ArgsParser {
     private companion object {
-        val FIRST_FLAG = "-l"
-        val SECOND_FLAG = "-p"
-        val SCHEMA = setOf(FIRST_FLAG, SECOND_FLAG)
+        val FIRST_INDICATOR = "-l"
+        val SECOND_INDICATOR = "-p"
+        val SCHEMA = setOf(FIRST_INDICATOR, SECOND_INDICATOR)
     }
 
     infix fun parse(arguments: Set<String>): Set<Flag> {
         require(SCHEMA.containsAll(arguments))
         return SCHEMA
-            .map { Flag(it, it in arguments) }
+            .map { parseFlag(it, arguments) }
             .toSet()
     }
+
+    private fun parseFlag(indicator: String, arguments: Set<String>) =
+        Flag(indicator, indicator in arguments)
 }
