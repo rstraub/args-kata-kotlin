@@ -6,8 +6,8 @@ class ArgsParser {
         val SCHEMA = setOf(FLAG)
     }
 
-    infix fun parse(arguments: Set<String>): Boolean {
+    infix fun parse(arguments: Set<String>): Flag {
         require(SCHEMA.containsAll(arguments))
-        return FLAG in arguments
+        return Flag(FLAG, FLAG in arguments)
     }
 }

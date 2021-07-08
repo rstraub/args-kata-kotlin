@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import kotlin.math.exp
 
 class ArgsParserTest {
     private lateinit var parser: ArgsParser
@@ -17,16 +18,18 @@ class ArgsParserTest {
 
     @Test
     fun `should parse false given a unspecified boolean flag`() {
+        val expected = Flag("-l", false)
         val result = parser parse emptySet()
 
-        assertFalse(result)
+        assertEquals(expected, result)
     }
 
     @Test
     internal fun `should parse true given a specified boolean flag`() {
+        val expected = Flag("-l", true)
         val result = parser parse setOf("-l")
 
-        assertTrue(result)
+        assertEquals(expected, result)
     }
 
     @Test
