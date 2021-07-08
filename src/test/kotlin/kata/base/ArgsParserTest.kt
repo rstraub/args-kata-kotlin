@@ -1,6 +1,8 @@
 package kata.base
 
 import io.kotest.matchers.collections.shouldBeIn
+import io.kotest.matchers.collections.shouldBeSameSizeAs
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -37,6 +39,14 @@ class ArgsParserTest {
 
         Flag("-l", true) shouldBeIn result
         Flag("-p", true) shouldBeIn result
+    }
+
+    @Test
+    internal fun `should return all flags in the schema`() {
+        val noArgsResult = parser parse emptySet()
+        val oneArgResult = parser parse setOf("-l")
+
+        noArgsResult shouldBeSameSizeAs oneArgResult
     }
 
     @Test
