@@ -1,7 +1,11 @@
 package kata.base
 
 class ArgsParser {
+    private companion object {
+        val FLAG = "-l"
+    }
+
     infix fun parse(arguments: Set<String>): Boolean {
-        return "-l" in arguments
+        return FLAG in arguments
     }
 }
