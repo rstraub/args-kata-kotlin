@@ -3,13 +3,12 @@
  */
 package kata.base
 
-class App {
-    val greeting: String
-        get() {
-            return "Hello world."
-        }
-}
+class App {}
 
-fun main() {
-    println(App().greeting)
+
+fun main(args: Array<String>) {
+    // Configure schema for app
+
+    // Parse args using argparser
+    args.forEach(::println)
 }

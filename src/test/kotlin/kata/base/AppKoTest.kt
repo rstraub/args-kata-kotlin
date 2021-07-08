@@ -9,7 +9,6 @@ import io.kotest.matchers.shouldNotBe
 
 class AppKoTest: WordSpec({
     "test should fail (kotest)" should {
-        val classUnderTest = App()
-        classUnderTest.greeting shouldBe null
+        "" shouldBe null
     }
 })
