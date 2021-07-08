@@ -18,4 +18,11 @@ class ArgsParserTest {
 
         assertTrue(result)
     }
+
+    @Test
+    internal fun `should return false given an unknown specified boolean flag`() {
+        val result = ArgsParser() parse setOf("-x")
+
+        assertFalse(result)
+    }
 }
