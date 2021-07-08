@@ -18,22 +18,28 @@ class ArgsParserTest {
 
     @Test
     fun `should parse false given a unspecified boolean flag`() {
+        val expected = setOf(Flag("-l", false))
+
         val result = parser parse emptySet()
 
-        assertEquals("-l", result.indicator)
-        assertFalse(result.value)
+        assertEquals(expected, result)
     }
 
     @Test
     internal fun `should parse true given a specified boolean flag`() {
+        val expected = setOf(Flag("-l", true))
+
         val result = parser parse setOf("-l")
 
-        assertEquals("-l", result.indicator)
-        assertTrue(result.value)
+        assertEquals(expected, result)
     }
 
     @Test
     internal fun `should parse to true given multiple specified boolean flags`() {
+//        val result = parser parse setOf("-l", "-p")
+//
+//        assertEquals("-l", result.indicator)
+//        assertTrue(result.value)
     }
 
     @Test
