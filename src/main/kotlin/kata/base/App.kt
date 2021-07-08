@@ -7,8 +7,9 @@ class App {}
 
 
 fun main(args: Array<String>) {
-    // Configure schema for app
-
-    // Parse args using argparser
-    args.forEach(::println)
+    val parser = ArgsParser()
+    args
+        .toSet()
+        .let(parser::parse)
+        .let(::println)
 }
