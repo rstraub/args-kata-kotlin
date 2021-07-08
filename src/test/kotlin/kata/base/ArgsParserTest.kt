@@ -1,9 +1,11 @@
 package kata.base
 
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class ArgsParserTest {
     private lateinit var parser: ArgsParser
@@ -28,9 +30,13 @@ class ArgsParserTest {
     }
 
     @Test
-    internal fun `should return false given an unknown specified boolean flag`() {
-        val result = parser parse setOf("-x")
+    internal fun `should parse to true given multiple specified boolean flags`() {
+    }
 
-        assertFalse(result)
+    @Test
+    internal fun `should throw exception given an unknown specified boolean flag`() {
+        assertThrows<IllegalArgumentException> {
+            parser parse setOf("-x")
+        }
     }
 }
