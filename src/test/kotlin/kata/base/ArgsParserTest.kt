@@ -1,5 +1,6 @@
 package kata.base
 
+import io.kotest.matchers.collections.shouldBeIn
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -18,38 +19,24 @@ class ArgsParserTest {
 
     @Test
     fun `should parse false given a unspecified boolean flag`() {
-        val expected = setOf(
-            Flag("-l", false),
-            Flag("-p", false)
-        )
-
         val result = parser parse emptySet()
 
-        assertEquals(expected, result)
+        Flag("-l", false) shouldBeIn result
     }
 
     @Test
     internal fun `should parse true given a specified boolean flag`() {
-        val expected = setOf(
-            Flag("-l", true),
-            Flag("-p", false)
-        )
-
         val result = parser parse setOf("-l")
 
-        assertEquals(expected, result)
+        Flag("-l", true) shouldBeIn result
     }
 
     @Test
     internal fun `should parse to true given multiple specified boolean flags`() {
-        val expected = setOf(
-            Flag("-l", true),
-            Flag("-p", true)
-        )
-
         val result = parser parse setOf("-l", "-p")
 
-        assertEquals(expected, result)
+        Flag("-l", true) shouldBeIn result
+        Flag("-p", true) shouldBeIn result
     }
 
     @Test
