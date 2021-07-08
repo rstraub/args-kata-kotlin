@@ -18,7 +18,10 @@ class ArgsParserTest {
 
     @Test
     fun `should parse false given a unspecified boolean flag`() {
-        val expected = setOf(Flag("-l", false))
+        val expected = setOf(
+            Flag("-l", false),
+            Flag("-p", false)
+        )
 
         val result = parser parse emptySet()
 
@@ -27,7 +30,10 @@ class ArgsParserTest {
 
     @Test
     internal fun `should parse true given a specified boolean flag`() {
-        val expected = setOf(Flag("-l", true))
+        val expected = setOf(
+            Flag("-l", true),
+            Flag("-p", false)
+        )
 
         val result = parser parse setOf("-l")
 
@@ -36,10 +42,14 @@ class ArgsParserTest {
 
     @Test
     internal fun `should parse to true given multiple specified boolean flags`() {
-//        val result = parser parse setOf("-l", "-p")
-//
-//        assertEquals("-l", result.indicator)
-//        assertTrue(result.value)
+        val expected = setOf(
+            Flag("-l", true),
+            Flag("-p", true)
+        )
+
+        val result = parser parse setOf("-l", "-p")
+
+        assertEquals(expected, result)
     }
 
     @Test
