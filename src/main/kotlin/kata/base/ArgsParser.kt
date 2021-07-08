@@ -7,8 +7,7 @@ class ArgsParser {
     }
 
     infix fun parse(arguments: Set<String>): Boolean {
-        if(!SCHEMA.containsAll(arguments))
-            throw IllegalArgumentException()
+        require(SCHEMA.containsAll(arguments))
         return FLAG in arguments
     }
 }
