@@ -8,9 +8,9 @@ class ArgsParser {
     }
 
     infix fun parse(arguments: Set<String>): Set<Flag> {
-        require(SCHEMA.values.containsAll(arguments))
+        require(SCHEMA matches arguments)
         return SCHEMA
-            .values
+            .flagIndicators
             .map { parseFlag(it, arguments) }
             .toSet()
     }
@@ -18,3 +18,4 @@ class ArgsParser {
     private fun parseFlag(indicator: String, arguments: Set<String>) =
         Flag(indicator, indicator in arguments)
 }
+
