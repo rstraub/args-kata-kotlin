@@ -16,7 +16,7 @@ class ArgsParserTest {
 
     @BeforeEach
     internal fun setUp() {
-        parser = ArgsParser(Schema(setOf(Flag("-l"), Flag("-p"))))
+        parser = ArgsParser(Schema(Flag("-l"), Flag("-p")))
     }
 
     @Test
