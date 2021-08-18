@@ -4,12 +4,13 @@ class ArgsParser {
     private companion object {
         val FIRST_INDICATOR = "-l"
         val SECOND_INDICATOR = "-p"
-        val SCHEMA = setOf(FIRST_INDICATOR, SECOND_INDICATOR)
+        val SCHEMA = Schema(setOf(FIRST_INDICATOR, SECOND_INDICATOR))
     }
 
     infix fun parse(arguments: Set<String>): Set<Flag> {
-        require(SCHEMA.containsAll(arguments))
+        require(SCHEMA.values.containsAll(arguments))
         return SCHEMA
+            .values
             .map { parseFlag(it, arguments) }
             .toSet()
     }
