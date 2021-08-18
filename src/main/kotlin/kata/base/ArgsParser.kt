@@ -6,7 +6,7 @@ class ArgsParser(private val schema: Schema) {
         require(schema matches arguments)
         return schema
             .flagIndicators
-            .map { parseFlag(it, arguments) }
+            .map { parseFlag(it.indicator, arguments) }
             .toSet()
     }
 
