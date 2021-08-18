@@ -5,21 +5,28 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
 internal class SchemaTest {
+    private val schema = Schema(Flag("-l"), Flag("-d"))
+
     @Nested
     inner class Matches {
         @Test
-        fun `should return true if the arguments match the defined schema`() {
-            Schema(Flag("-l")) matches setOf("-l") shouldBe true
+        internal fun `should return true given an argument defined by the schema`() {
+            schema matches setOf("-l") shouldBe true
         }
 
         @Test
-        fun `should return false if the arguments do not match the defined schema`() {
-            Schema(Flag("-l")) matches setOf("-p") shouldBe false
+        internal fun `should return true given all arguments defined by the schema`() {
+            schema matches setOf("-l", "-d") shouldBe true
+        }
+
+        @Test
+        internal fun `should return false if the arguments do not match the defined schema`() {
+            schema matches setOf("-x") shouldBe false
         }
 
         @Test
         internal fun `should return true given no arguments`() {
-            Schema(Flag("-l")) matches emptySet() shouldBe true
+            schema matches emptySet() shouldBe true
         }
     }
 }
