@@ -20,21 +20,21 @@ class ArgsParserTest {
     }
 
     @Test
-    fun `should parse false given a unspecified boolean flag`() {
+    fun `should return default value given a unspecified flag`() {
         val result = parser parse emptySet()
 
         Flag("-l", false) shouldBeIn result
     }
 
     @Test
-    internal fun `should parse true given a specified boolean flag`() {
+    internal fun `should return value given a specified flag`() {
         val result = parser parse setOf("-l")
 
         Flag("-l", true) shouldBeIn result
     }
 
     @Test
-    internal fun `should parse to true given multiple specified boolean flags`() {
+    internal fun `should parse given multiple specified flags`() {
         val result = parser parse setOf("-l", "-p")
 
         Flag("-l", true) shouldBeIn result
@@ -50,7 +50,7 @@ class ArgsParserTest {
     }
 
     @Test
-    internal fun `should throw exception given an unknown specified boolean flag`() {
+    internal fun `should throw exception given an unknown specified flag`() {
         assertThrows<IllegalArgumentException> {
             parser parse setOf("-x")
         }

@@ -14,3 +14,8 @@ Build with:
 
 Clean with:
 `gradle clean`
+
+# TODO
+[] Integer flag
+[] String flag
+[] FlagIndicator type
