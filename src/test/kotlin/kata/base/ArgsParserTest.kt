@@ -11,7 +11,7 @@ class ArgsParserTest {
 
     @BeforeEach
     internal fun setUp() {
-        parser = ArgsParser(Schema(BooleanFlag("-l"), BooleanFlag("-p")))
+        parser = ArgsParser(Schema(BooleanFlag("-l"), NumericFlag("-p")))
     }
 
     @Test
@@ -33,7 +33,7 @@ class ArgsParserTest {
         val result = parser parse setOf("-l", "-p")
 
         BooleanFlag("-l", true) shouldBeIn result
-        BooleanFlag("-p", true) shouldBeIn result
+        NumericFlag("-p", -1) shouldBeIn result
     }
 
     @Test
