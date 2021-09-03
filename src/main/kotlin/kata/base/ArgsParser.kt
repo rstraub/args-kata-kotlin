@@ -2,7 +2,7 @@ package kata.base
 
 class ArgsParser(private val schema: Schema) {
 
-    infix fun parse(arguments: Set<String>): Set<Flag> {
+    infix fun parse(arguments: Set<String>): Set<BooleanFlag> {
         require(schema matches arguments)
         return schema
             .flags
@@ -11,6 +11,6 @@ class ArgsParser(private val schema: Schema) {
     }
 
     private fun parseFlag(indicator: String, arguments: Set<String>) =
-        Flag(indicator, indicator in arguments)
+        BooleanFlag(indicator, indicator in arguments)
 }
 

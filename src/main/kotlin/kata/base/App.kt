@@ -7,7 +7,7 @@ class App {}
 
 
 fun main(args: Array<String>) {
-    val parser = ArgsParser(Schema(Flag("-l"), Flag("-p")))
+    val parser = ArgsParser(Schema(BooleanFlag("-l"), BooleanFlag("-p")))
     args
         .toSet()
         .let(parser::parse)

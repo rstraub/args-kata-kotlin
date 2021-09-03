@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
 internal class SchemaTest {
-    private val schema = Schema(Flag("-l"), Flag("-d"))
+    private val schema = Schema(BooleanFlag("-l"), BooleanFlag("-d"))
 
     @Nested
     inner class Matches {
