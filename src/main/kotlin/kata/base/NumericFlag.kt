@@ -1,3 +1,3 @@
 package kata.base
 
-class NumericFlag(indicator: String, val value: Int) : Flag(indicator)
+class NumericFlag(indicator: String, value: Int = -1) : Flag<Int>(indicator, value)

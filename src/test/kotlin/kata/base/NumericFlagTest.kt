@@ -8,12 +8,13 @@ internal class NumericFlagTest {
     internal fun `should be created given custom value`() {
         val result = NumericFlag("-p", 8080)
 
-        result.indicator shouldBe "-p"
         result.value shouldBe 8080
     }
 
     @Test
     internal fun `should be created given default value`() {
-        TODO("Not yet implemented")
+        val result = NumericFlag("-p")
+
+        result.value shouldBe -1
     }
 }
