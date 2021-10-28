@@ -10,11 +10,4 @@ internal class NumericFlagTest {
 
         result.value shouldBe 8080
     }
-
-    @Test
-    internal fun `should be created given default value`() {
-        val result = NumericFlag("-p")
-
-        result.value shouldBe -1
-    }
 }

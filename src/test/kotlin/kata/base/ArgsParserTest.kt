@@ -47,6 +47,23 @@ class ArgsParserTest {
         }
     }
 
+    @Nested
+    inner class NumericFlags {
+        @BeforeEach
+        fun setup() {
+            parser = ArgsParser(Schema(NumericFlag("-p", 8080)))
+        }
+
+        @Test
+        fun `should return default values from schema given no arguments are supplied`() {
+            val result = parser parse ""
+
+            result shouldBe setOf(
+                NumericFlag("-p", 8080),
+            )
+        }
+    }
+
     @Test
     internal fun `should throw exception given an unknown specified flag`() {
         parser = ArgsParser(Schema())
