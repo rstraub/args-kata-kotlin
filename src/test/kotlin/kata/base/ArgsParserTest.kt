@@ -1,7 +1,6 @@
 package kata.base
 
 import io.kotest.matchers.collections.shouldBeIn
-import io.kotest.matchers.collections.shouldBeSameSizeAs
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -15,33 +14,25 @@ class ArgsParserTest {
     }
 
     @Test
-    fun `should return default value given a unspecified flag`() {
+    fun `should return default values from schema given no arguments are supplied`() {
         val result = parser parse ""
 
         BooleanFlag("-l", false) shouldBeIn result
     }
 
     @Test
-    internal fun `should return value given a specified flag`() {
+    internal fun `should return values given some arguments are supplied`() {
         val result = parser parse "-l"
 
         BooleanFlag("-l", true) shouldBeIn result
     }
 
     @Test
-    internal fun `should parse given multiple specified flags`() {
+    internal fun `should return the values given all arguments are supplied`() {
         val result = parser parse "-l -p"
 
         BooleanFlag("-l", true) shouldBeIn result
         BooleanFlag("-p", true) shouldBeIn result
-    }
-
-    @Test
-    internal fun `should return all flags in the schema`() {
-        val noArgsResult = parser parse ""
-        val oneArgResult = parser parse "-l"
-
-        noArgsResult shouldBeSameSizeAs oneArgResult
     }
 
     @Test
