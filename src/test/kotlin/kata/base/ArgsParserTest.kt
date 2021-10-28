@@ -11,7 +11,7 @@ class ArgsParserTest {
 
     @BeforeEach
     internal fun setUp() {
-        parser = ArgsParser(Schema(BooleanFlag("-l"), NumericFlag("-p")))
+        parser = ArgsParser(Schema(BooleanFlag("-l"), BooleanFlag("-p")))
     }
 
     @Test
@@ -30,10 +30,10 @@ class ArgsParserTest {
 
     @Test
     internal fun `should parse given multiple specified flags`() {
-        val result = parser parse setOf("-l", "-p")
+        val result = parser parse "-l -p"
 
         BooleanFlag("-l", true) shouldBeIn result
-        NumericFlag("-p", -1) shouldBeIn result
+        BooleanFlag("-p", true) shouldBeIn result
     }
 
     @Test

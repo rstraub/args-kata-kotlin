@@ -3,7 +3,7 @@ package kata.base
 class ArgsParser(private val schema: Schema) {
     infix fun parse(arguments: String): Set<Flag<*>> {
         if (arguments.isBlank()) return schema.flags
-        return parse(setOf(arguments))
+        return parse(arguments.split(" ").toSet())
     }
 
     infix fun parse(arguments: Set<String>): Set<Flag<*>> {
