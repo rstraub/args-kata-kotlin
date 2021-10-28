@@ -38,8 +38,8 @@ class ArgsParserTest {
 
     @Test
     internal fun `should return all flags in the schema`() {
-        val noArgsResult = parser parse emptySet()
-        val oneArgResult = parser parse setOf("-l")
+        val noArgsResult = parser parse ""
+        val oneArgResult = parser parse "-l"
 
         noArgsResult shouldBeSameSizeAs oneArgResult
     }
@@ -47,7 +47,7 @@ class ArgsParserTest {
     @Test
     internal fun `should throw exception given an unknown specified flag`() {
         assertThrows<IllegalArgumentException> {
-            parser parse setOf("-x")
+            parser parse "-x"
         }
     }
 }

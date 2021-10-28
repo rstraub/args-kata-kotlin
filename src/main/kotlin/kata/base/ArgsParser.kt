@@ -6,7 +6,7 @@ class ArgsParser(private val schema: Schema) {
         return parse(arguments.split(" ").toSet())
     }
 
-    infix fun parse(arguments: Set<String>): Set<Flag<*>> {
+    private fun parse(arguments: Set<String>): Set<Flag<*>> {
         require(schema matches arguments)
         return schema
             .flags

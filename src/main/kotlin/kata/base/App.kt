@@ -3,13 +3,13 @@
  */
 package kata.base
 
-class App {}
+class App
 
 
 fun main(args: Array<String>) {
     val parser = ArgsParser(Schema(BooleanFlag("-l"), BooleanFlag("-p")))
     args
-        .toSet()
+        .joinToString(" ")
         .let(parser::parse)
         .let(::println)
 }
