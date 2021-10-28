@@ -16,7 +16,7 @@ class ArgsParserTest {
 
     @Test
     fun `should return default value given a unspecified flag`() {
-        val result = parser parse emptySet()
+        val result = parser parse ""
 
         BooleanFlag("-l", false) shouldBeIn result
     }

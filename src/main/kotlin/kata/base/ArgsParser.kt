@@ -9,6 +9,10 @@ class ArgsParser(private val schema: Schema) {
             .toSet()
     }
 
+    infix fun parse(arguments: String): Set<Flag<*>> {
+        return schema.flags
+    }
+
     private fun parseFlag(flag: Flag<*>, arguments: Set<String>) =
         when (flag) {
             is BooleanFlag -> BooleanFlag(flag.indicator, flag.indicator in arguments)

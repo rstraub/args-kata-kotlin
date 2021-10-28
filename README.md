@@ -5,10 +5,12 @@
 * Kotest
 
 # Running Tests
+
 Run tests with:
 `gradle test`
 
 # Build
+
 Build with:
 `gradle build`
 
@@ -16,6 +18,7 @@ Clean with:
 `gradle clean`
 
 # TODO
+
 [] Integer flag
 [] String flag
-[] FlagIndicator type
+[] String input for public method
