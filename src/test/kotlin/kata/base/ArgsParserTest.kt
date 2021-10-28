@@ -23,7 +23,7 @@ class ArgsParserTest {
 
     @Test
     internal fun `should return value given a specified flag`() {
-        val result = parser parse setOf("-l")
+        val result = parser parse "-l"
 
         BooleanFlag("-l", true) shouldBeIn result
     }
